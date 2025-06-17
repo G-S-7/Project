@@ -15,9 +15,6 @@ for(let sel of selects){
             newOpt.selected=true;
         }sel.append(newOpt);
     }
-    sel.addEventListener("change", (evt)=>{
-        updateFlag(evt.target);
-    });
 }
 
 const updateExchangeRate = async ()=> {
@@ -34,14 +31,6 @@ const updateExchangeRate = async ()=> {
     let rate = data[from.value][to.value];
     let finalamt = amtval*rate;
     msg.innerText = `${amtval} ${from.value.toUpperCase()} = ${finalamt.toFixed(4)} ${to.value.toUpperCase()}`;
-};
-
-const updateFlag = (ele) =>{
-    let curr = ele.value;
-    let countryCode = countryList[curr];
-    let src = `http://flagsapi.com/${countryCode}/flat/64.png`;
-    ele.parentElement.querySelector("img");
-    Image.src = src;
 };
 
 button.addEventListener("click",async (evt)=>{
